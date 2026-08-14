@@ -7,6 +7,7 @@
 <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="cart.js" defer></script>
 <style>
   .navbar {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
@@ -41,7 +42,7 @@
       <div class="collapse navbar-collapse" id="mynavbar">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-paw"></i> Home</a>
+            <a class="nav-link" href="index.html"><i class="fas fa-paw"></i> Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Dog.html"><i class="fas fa-dog"></i> DOG</a>
@@ -56,6 +57,10 @@
             <a class="nav-link" href="Shop.html"><i class="fas fa-cart-plus"></i> Shop</a>
           </li>
         </ul>
+        <a href="Shop.html" class="btn btn-theme position-relative ms-2">
+          <i class="fas fa-cart-shopping"></i>
+          <span id="cart-count" class="badge sale-badge position-absolute top-0 start-100 translate-middle rounded-pill">0</span>
+        </a>
       </div>
     </div>
   </nav>
