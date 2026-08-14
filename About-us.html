@@ -7,6 +7,24 @@
 <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+<style>
+  .navbar {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  }
+  .btn-theme {
+    border: 1px solid #ff6f91;
+    color: #d6336c;
+    background-color: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .btn-theme:hover {
+    background-color: #ff6f91;
+    color: #ffffff;
+  }
+  .site-footer {
+    background-color: #4fd1c5;
+  }
+</style>
 
 </head>
 
@@ -14,7 +32,7 @@
 
 <!-- ================= HEADER ================= -->
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-sm navbar-white bg-white">
+  <nav class="navbar navbar-expand-sm" style="background-color: #ffb6c1;">
     <div class="container-fluid">
       <a class="navbar-brand" href="javascript:void(0)">C&D PetStore</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -38,12 +56,6 @@
             <a class="nav-link" href="Shop.html"><i class="fas fa-cart-plus"></i> Shop</a>
           </li>
         </ul>
-        <form class="d-flex align-items-center">
-          <input class="form-control me-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-dark ms-3" type="button">
-            <i class="fas fa-cart-plus"></i> Cart <i class="fas fa-arrows-rotate" style="font-size:10px;color:red"></i>
-          </button>
-        </form>
       </div>
     </div>
   </nav>
@@ -95,7 +107,7 @@
                     they are part of the family.
                 </p>
 
-                <a href="#products" class="btn btn-primary px-4">
+                <a href="#products" class="btn btn-theme px-4">
                     Explore Products
                 </a>
 
@@ -163,6 +175,13 @@
     </div>
 
 </section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="p-3 mb-3 site-footer">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright ©C&DPetStore 2026</p>
+  </div>
+</footer>
 
 </body>
 </html>
