@@ -1,11 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop in Style</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="cart.js" defer></script>
+  <style>
+    body { background-color: #ffb6c1; }
+    .card-img-top { height: 220px; object-fit: contain; background-color: #f4f4f4; }
+    .navbar-nav .nav-link i { margin-right: 6px; }
+
+    /* --- Cohesive color palette --- */
+    .navbar {
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    }
+    .sale-badge {
+      background-color: #ff6f91 !important;
+    }
+    .btn-theme {
+      border: 1px solid #ff6f91;
+      color: #d6336c;
+      background-color: transparent;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .btn-theme:hover {
+      background-color: #ff6f91;
+      color: #ffffff;
+    }
+    .site-footer {
+      background-color: #b6ffeb;
+    }
+    #cart-toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #d6336c;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 8px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      pointer-events: none;
+      z-index: 2000;
+    }
+    #cart-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
-    <p></p>
+
+  <div id="cart-toast"></div>
+
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-sm" style="background-color: #ffb6c1;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="javascript:void(0)">C&D PetStore</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-paw"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Dog.html"><i class="fas fa-dog"></i> DOG</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Cat.html"><i class="fas fa-cat"></i> CAT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="About-us.html"><i class="fas fa-heart"></i> About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Shop.html"><i class="fas fa-cart-plus"></i> Shop</a>
+          </li>
+        </ul>
+        <a href="Shop.html" class="btn btn-theme position-relative ms-2">
+          <i class="fas fa-cart-shopping"></i>
+          <span id="cart-count" class="badge sale-badge position-absolute top-0 start-100 translate-middle rounded-pill">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="p-5 text-dark text-center" style="background-color: #b6ffeb;">
+    <h1>CATSTORE</h1>
+    <p class="mb-0">Welcome to C&D PetStore</p>
+  </div>
+
+  <!-- Products -->
+   <h4>SPECIAL CAT</h4>
+  <div class="container my-5">
+    <div class="row g-4">
+
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c1.jpg" alt="Mimi the British Shorthair">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Mimi</h5>
+            <p class="mb-1">British Shorthair</p>
+            <p class="mb-0">$600</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Mimi', 'British Shorthair', 600, 'c1.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c2.jpg" alt="Luna the Persian">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Luna</h5>
+            <p class="mb-1">Persian (fluffy)</p>
+            <p class="mb-0">$700</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Luna', 'Persian (fluffy)', 700, 'c2.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100 position-relative">
+          <span class="badge sale-badge text-white position-absolute" style="top: 0.5rem; right: 0.5rem;">Sale</span>
+          <img class="card-img-top" src="c3.jpg" alt="Milky the Ragdoll">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Milky</h5>
+            <p class="mb-1">Ragdoll (blue eyes)</p>
+            <p class="mb-0">$850</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Milky', 'Ragdoll (blue eyes)', 850, 'c3.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c4.jpg" alt="Tom the Scottish Fold">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Tom</h5>
+            <p class="mb-1">Scottish Fold</p>
+            <p class="mb-0">$750</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Tom', 'Scottish Fold', 750, 'c4.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c5.jpg" alt="Cleo the Siamese">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Cleo</h5>
+            <p class="mb-1">Siamese</p>
+            <p class="mb-0">$500</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Cleo', 'Siamese', 500, 'c5.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100 position-relative">
+          <span class="badge sale-badge text-white position-absolute" style="top: 0.5rem; right: 0.5rem;">Sale</span>
+          <img class="card-img-top" src="c6.jpg" alt="Snowball the Turkish Angora">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Snowball</h5>
+            <p class="mb-1">Turkish Angora (pure white)</p>
+            <p class="mb-0">$650</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Snowball', 'Turkish Angora (pure white)', 650, 'c6.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c7.jpg" alt="Garfield the Exotic Shorthair">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Garfield</h5>
+            <p class="mb-1">Exotic Shorthair</p>
+            <p class="mb-0">$700</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Garfield', 'Exotic Shorthair', 700, 'c7.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c8.jpg" alt="Nala the Maine Coon">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Nala</h5>
+            <p class="mb-1">Maine Coon (giant breed)</p>
+            <p class="mb-0">$1200</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Nala', 'Maine Coon (giant breed)', 1200, 'c8.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100 position-relative">
+          <span class="badge sale-badge text-white position-absolute" style="top: 0.5rem; right: 0.5rem;">Sale</span>
+          <img class="card-img-top" src="c9.jpg" alt="Kiki the Sphynx">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Kiki</h5>
+            <p class="mb-1">Sphynx (hairless, rare)</p>
+            <p class="mb-0">$1500</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Kiki', 'Sphynx (hairless, rare)', 1500, 'c9.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c10.jpg" alt="Milo the American Shorthair">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Milo</h5>
+            <p class="mb-1">American Shorthair</p>
+            <p class="mb-0">$550</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Milo', 'American Shorthair', 550, 'c10.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c11.jpg" alt="Coco the Bengal">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Coco</h5>
+            <p class="mb-1">Bengal (wild pattern)</p>
+            <p class="mb-0">$1300</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Coco', 'Bengal (wild pattern)', 1300, 'c11.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100 position-relative">
+          <span class="badge sale-badge text-white position-absolute" style="top: 0.5rem; right: 0.5rem;">Sale</span>
+          <img class="card-img-top" src="c12.jpg" alt="Oreo the Tuxedo Cat">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Oreo</h5>
+            <p class="mb-1">Tuxedo Cat (black &amp; white)</p>
+            <p class="mb-0">$400</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Oreo', 'Tuxedo Cat (black &amp; white)', 400, 'c12.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c13.jpg" alt="Ginger the Orange Tabby">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Ginger</h5>
+            <p class="mb-1">Orange Tabby</p>
+            <p class="mb-0">$450</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Ginger', 'Orange Tabby', 450, 'c13.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c14.jpg" alt="Bella the Himalayan">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Bella</h5>
+            <p class="mb-1">Himalayan (long fur)</p>
+            <p class="mb-0">$800</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Bella', 'Himalayan (long fur)', 800, 'c14.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100 position-relative">
+          <span class="badge sale-badge text-white position-absolute" style="top: 0.5rem; right: 0.5rem;">Sale</span>
+          <img class="card-img-top" src="c15.jpg" alt="Pudding the Munchkin">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Pudding</h5>
+            <p class="mb-1">Munchkin (short legs)</p>
+            <p class="mb-0">$900</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Pudding', 'Munchkin (short legs)', 900, 'c15.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c16.jpg" alt="Simba the Abyssinian">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Simba</h5>
+            <p class="mb-1">Abyssinian</p>
+            <p class="mb-0">$700</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Simba', 'Abyssinian', 700, 'c16.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c17.jpg" alt="Angel the Birman">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Angel</h5>
+            <p class="mb-1">Birman</p>
+            <p class="mb-0">$850</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Angel', 'Birman', 850, 'c17.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100 position-relative">
+          <span class="badge sale-badge text-white position-absolute" style="top: 0.5rem; right: 0.5rem;">Sale</span>
+          <img class="card-img-top" src="c18.jpg" alt="Tiger the Bengal Mix">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Tiger</h5>
+            <p class="mb-1">Bengal Mix</p>
+            <p class="mb-0">$650</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Tiger', 'Bengal Mix', 650, 'c18.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c19.jpg" alt="Choco the Chocolate Point Siamese">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Choco</h5>
+            <p class="mb-1">Chocolate Point Siamese</p>
+            <p class="mb-0">$600</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Choco', 'Chocolate Point Siamese', 600, 'c19.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c20.jpg" alt="Sugar the Ragamuffin">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Sugar</h5>
+            <p class="mb-1">Ragamuffin</p>
+            <p class="mb-0">$950</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Sugar', 'Ragamuffin', 950, 'c20.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100 position-relative">
+          <span class="badge sale-badge text-white position-absolute" style="top: 0.5rem; right: 0.5rem;">Sale</span>
+          <img class="card-img-top" src="c21.jpg" alt="Peanut the Devon Rex">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Peanut</h5>
+            <p class="mb-1">Devon Rex (curly fur)</p>
+            <p class="mb-0">$1000</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Peanut', 'Devon Rex (curly fur)', 1000, 'c21.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c22.jpg" alt="Marble the Norwegian Forest Cat">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Marble</h5>
+            <p class="mb-1">Norwegian Forest Cat</p>
+            <p class="mb-0">$1100</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Marble', 'Norwegian Forest Cat', 1100, 'c22.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+          <img class="card-img-top" src="c23.jpg" alt="Chip the Manx">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Chip</h5>
+            <p class="mb-1">Manx (tailless)</p>
+            <p class="mb-0">$700</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Chip', 'Manx (tailless)', 700, 'c23.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100 position-relative">
+          <span class="badge sale-badge text-white position-absolute" style="top: 0.5rem; right: 0.5rem;">Sale</span>
+          <img class="card-img-top" src="c24.jpg" alt="Star the Russian Blue">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder">Star</h5>
+            <p class="mb-1">Russian Blue</p>
+            <p class="mb-0">$900</p>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <a class="btn btn-theme" href="#!" onclick="addToCart('Star', 'Russian Blue', 900, 'c24.jpg'); return false;"><i class="fas fa-cart-plus"></i> Buy</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="p-3 mb-3 site-footer">
+    <div class="container">
+      <p class="m-0 text-center text-dark">Copyright ©C&DPetStore 2026</p>
+    </div>
+  </footer>
 </body>
 </html>
