@@ -1,190 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>C&D Pet Store</title>
-<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="cart.js" defer></script>
-<style>
-  .navbar {
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-  }
-  .btn-theme {
-    border: 1px solid #ff6f91;
-    color: #d6336c;
-    background-color: transparent;
-    transition: background-color 0.2s ease, color 0.2s ease;
-  }
-  .btn-theme:hover {
-    background-color: #ff6f91;
-    color: #ffffff;
-  }
-  .site-footer {
-    background-color: #4fd1c5;
-  }
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C&D Pet Store</title>
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="cart.js" defer></script>
+  <style>
+    .navbar {
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    }
+    .btn-theme {
+      border: 1px solid #ff6f91;
+      color: #d6336c;
+      background-color: transparent;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .btn-theme:hover {
+      background-color: #ff6f91;
+      color: #ffffff;
+    }
+    .sale-badge {
+      background-color: #d6336c;
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 0.35em 0.6em;
+    }
+    .site-footer {
+      background-color: #4fd1c5;
+    }
+  </style>
 </head>
 
 <body>
 
 <!-- ================= HEADER ================= -->
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-sm" style="background-color: #ffb6c1;">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="javascript:void(0)">C&D PetStore</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html"><i class="fas fa-paw"></i> Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Dog.html"><i class="fas fa-dog"></i> DOG</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Cat.html"><i class="fas fa-cat"></i> CAT</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="About-us.html"><i class="fas fa-heart"></i> About us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Shop.html"><i class="fas fa-cart-plus"></i> Shop</a>
-          </li>
-        </ul>
-        <a href="Shop.html" class="btn btn-theme position-relative ms-2">
-          <i class="fas fa-cart-shopping"></i>
-          <span id="cart-count" class="badge sale-badge position-absolute top-0 start-100 translate-middle rounded-pill">0</span>
-        </a>
-      </div>
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #ffb6c1;">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="index.html">C&D Pet Store</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-paw"></i> Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="Dog.html"><i class="fas fa-dog"></i> DOG</a></li>
+        <li class="nav-item"><a class="nav-link" href="Cat.html"><i class="fas fa-cat"></i> CAT</a></li>
+        <li class="nav-item"><a class="nav-link" href="About-us.html"><i class="fas fa-heart"></i> About us</a></li>
+        <li class="nav-item"><a class="nav-link" href="Shop.html"><i class="fas fa-cart-plus"></i> Shop</a></li>
+      </ul>
+      <a href="Shop.html" class="btn btn-theme position-relative ms-2">
+        <i class="fas fa-cart-shopping"></i>
+        <span id="cart-count" class="badge sale-badge position-absolute top-0 start-100 translate-middle rounded-pill">0</span>
+      </a>
     </div>
-  </nav>
-
+  </div>
+</nav>
 
 <!-- ================= ABOUT US ================= -->
 <section id="about" class="py-5 bg-light">
-
-    <div class="container">
-
-        <!-- Section Title -->
-        <div class="text-center mb-5">
-
-            <h1 class="fw-bold">
-                About C&D Pet Store
-            </h1>
-
-            <p class="text-muted">
-                Caring for pets, serving families, and building trust.
-            </p>
-
-        </div>
-
-
-        <div class="row align-items-center g-5">
-
-            <!-- About -->
-            <div class="col-md-6">
-
-                <h2 class="fw-bold mb-3">
-                    Who We Are
-                </h2>
-
-                <p class="text-muted">
-                    C&D Pet Store is a newly opened pet shop created
-                    with love and passion for animals.
-                </p>
-
-                <p class="text-muted">
-                    Although our shop has just opened today, we already
-                    have valuable experience in caring for and
-                    understanding pets.
-                </p>
-
-                <p class="text-muted">
-                    Our goal is to provide pet owners with quality
-                    products, helpful advice, and friendly service.
-                    We believe that pets are more than just animals —
-                    they are part of the family.
-                </p>
-
-                <a href="#products" class="btn btn-theme px-4">
-                    Explore Products
-                </a>
-
-            </div>
-
-
-            <!-- Mission & Vision -->
-            <div class="col-md-6">
-
-                <div class="card border-0 shadow-sm mb-4">
-
-                    <div class="card-body p-4">
-
-                        <h3 class="fw-bold">
-                            🐾 Our Mission
-                        </h3>
-
-                        <ul class="mt-3">
-
-                            <li class="mb-2">
-                                Provide quality pet products
-                            </li>
-
-                            <li class="mb-2">
-                                Treat every pet with care and love
-                            </li>
-
-                            <li class="mb-2">
-                                Offer friendly customer service
-                            </li>
-
-                            <li class="mb-2">
-                                Share helpful pet-care knowledge
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-
-                <div class="card border-0 shadow-sm">
-
-                    <div class="card-body p-4">
-
-                        <h3 class="fw-bold">
-                            ❤️ Our Vision
-                        </h3>
-
-                        <p class="text-muted mt-3 mb-0">
-                            To become a trusted pet store where every
-                            pet and pet owner receives the care,
-                            attention, and quality they deserve.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
+  <div class="container">
+    <!-- Section Title -->
+    <div class="text-center mb-5">
+      <h1 class="fw-bold">About C&D Pet Store</h1>
+      <p class="text-muted">Caring for pets, serving families, and building trust.</p>
     </div>
 
+    <div class="row align-items-center g-5">
+      <!-- About -->
+      <div class="col-md-6">
+        <h2 class="fw-bold mb-3">Who We Are</h2>
+        <p class="text-muted">C&D Pet Store is a newly opened pet shop created with love and passion for animals.</p>
+        <p class="text-muted">Although our shop has just opened today, we already have valuable experience in caring for and understanding pets.</p>
+        <p class="text-muted">Our goal is to provide pet owners with quality products, helpful advice, and friendly service. We believe that pets are more than just animals — they are part of the family.</p>
+        <a href="#products" class="btn btn-theme px-4">Explore Products</a>
+      </div>
+
+      <!-- Mission & Vision -->
+      <div class="col-md-6">
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body p-4">
+            <h3 class="fw-bold">🐾 Our Mission</h3>
+            <ul class="mt-3 list-unstyled">
+              <li class="mb-2">Provide quality pet products</li>
+              <li class="mb-2">Treat every pet with care and love</li>
+              <li class="mb-2">Offer friendly customer service</li>
+              <li class="mb-2">Share helpful pet-care knowledge</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-bold">❤️ Our Vision</h3>
+            <p class="text-muted mt-3 mb-0">
+              To become a trusted pet store where every pet and pet owner receives the care, attention, and quality they deserve.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ================= FOOTER ================= -->
 <footer class="p-3 mb-3 site-footer">
   <div class="container">
-    <p class="m-0 text-center text-white">Copyright ©C&DPetStore 2026</p>
+    <p class="m-0 text-center text-white fw-bold">Copyright © C&D Pet Store 2026</p>
   </div>
 </footer>
 
